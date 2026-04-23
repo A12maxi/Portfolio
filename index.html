@@ -984,7 +984,7 @@ footer {
   <div class="about-grid reveal">
     <div class="about-text">
       <p>Soy <strong>Antoni Lozano</strong>, técnico IT y desarrollador junior de Molins de Rei (Barcelona). Combino habilidades técnicas en soporte de sistemas con experiencia práctica en desarrollo de software.</p>
-      <p>Durante más de <strong>4 años como autónomo</strong>, he gestionado incidencias técnicas para clientes particulares, resolviendo el 90% el mismo día. He trabajado con sistemas Windows y Linux, redes locales, VPNs y diagnóstico de hardware.</p>
+      <p>Durante más de <strong>4 años como freelance</strong>, he gestionado incidencias técnicas para clientes particulares, resolviendo el 90% el mismo día. He trabajado con sistemas Windows y Linux, redes locales, VPNs y diagnóstico de hardware.</p>
       <p>En el ámbito del desarrollo, he creado <strong>3 videojuegos con Unity y C#</strong> en un entorno profesional, y he programado herramientas de automatización en Python para resolver problemas reales.</p>
       <p>Busco un entorno donde crecer técnicamente y aportar valor real al equipo, tanto en soporte IT como en programación.</p>
     </div>
@@ -1005,7 +1005,7 @@ footer {
         </div>
         <div class="info-row">
           <span class="info-key">IDIOMAS</span>
-          <span class="info-val">Catalán · Español · Inglés B2</span>
+          <span class="info-val">Catalán · Español · Inglés B1</span>
         </div>
         <div class="info-row">
           <span class="info-key">MOVILIDAD</span>
@@ -1137,7 +1137,7 @@ footer {
       <div class="tl-dot" style="background:var(--accent2); box-shadow: 0 0 12px rgba(79,142,247,0.4);"></div>
       <div class="tl-date">Ene 2020 – Dic 2024</div>
       <div class="tl-header">
-        <div class="tl-role">Técnico IT Autónomo</div>
+        <div class="tl-role">Técnico IT Freelance</div>
         <div class="tl-company">Freelance · Barcelona</div>
       </div>
       <ul class="tl-bullets">
@@ -1279,92 +1279,58 @@ footer {
 </section>
 
 <section id="contact">
-  <div class="section-tag" style="justify-content:center">contacto</div>
-  <h2 class="section-title reveal" style="text-align:center">¿Trabajamos juntos?</h2>
-  <p style="text-align:center; color:var(--muted); font-size:16px; margin-bottom:40px; max-width:480px; margin-left:auto; margin-right:auto;" class="reveal">
-    Estoy disponible para oportunidades en Soporte IT y Desarrollo Junior. ¡No dudes en contactarme!
-  </p>
-  <div style="text-align:center;" class="reveal">
-    <a href="mailto:antoni11122003@gmail.com" class="contact-email">
-      antoni11122003@gmail.com
-    </a>
-  </div>
-  <div class="contact-links reveal">
-    <a href="tel:+34722530335" class="clink">📞 +34 722 530 335</a>
-    <a href="https://github.com/Amaxi-12" target="_blank" class="clink">⌥ GitHub</a>
-    <a href="https://www.linkedin.com/in/antonilozanocasado/" target="_blank" class="clink">in LinkedIn</a>
+  <div class="section-tag">contacto</div>
+  <h2 class="section-title">¿Hablamos?</h2>
+  <a href="mailto:antoni11122003@gmail.com" class="contact-email">antoni11122003@gmail.com</a>
+  <div class="contact-links">
+    <a href="tel:+34722530335" class="clink"><span>📞</span> +34 722 530 335</a>
+    <a href="https://github.com/Amaxi-12" target="_blank" class="clink"><span>⌥</span> GitHub</a>
+    <a href="https://linkedin.com" target="_blank" class="clink"><span>in</span> LinkedIn</a>
   </div>
 </section>
 
 <footer>
   <div class="footer-left">
-    <span>Antoni Lozano Casado © 2025</span>
-    <span style="color:var(--border2)">Molins de Rei, Barcelona</span>
+    <div>&copy; 2026 Antoni Lozano</div>
+    <div style="opacity: 0.5;">Diseñado & Programado por mí mismo</div>
   </div>
   <div class="footer-right">
-    PORTFOLIO PROFESIONAL
+    molins de rei, barcelona
   </div>
 </footer>
 
 <script>
-// Cursor
+// Custom Cursor Logic
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursorRing');
 let mx = 0, my = 0, rx = 0, ry = 0;
 
 document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
+  mx = e.clientX;
+  my = e.clientY;
   cursor.style.left = mx + 'px';
-  cursor.style.top  = my + 'px';
+  cursor.style.top = my + 'px';
 });
 
 function animRing() {
   rx += (mx - rx) * 0.12;
   ry += (my - ry) * 0.12;
   ring.style.left = rx + 'px';
-  ring.style.top  = ry + 'px';
+  ring.style.top = ry + 'px';
   requestAnimationFrame(animRing);
 }
 animRing();
 
-document.querySelectorAll('a, button').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    cursor.style.width = '20px';
-    cursor.style.height = '20px';
-  });
-  el.addEventListener('mouseleave', () => {
-    cursor.style.width = '12px';
-    cursor.style.height = '12px';
-  });
-});
-
-// Scroll reveal
+// Scroll Reveal Logic
 const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-    }
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
   });
 }, { threshold: 0.1 });
 
-reveals.forEach(r => observer.observe(r));
-
-// Active nav link
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-links a');
-
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(s => {
-    if (window.scrollY >= s.offsetTop - 120) current = s.id;
-  });
-  navLinks.forEach(a => {
-    a.style.color = a.getAttribute('href') === '#' + current
-      ? 'var(--accent)'
-      : '';
-  });
-});
+reveals.forEach(el => observer.observe(el));
 </script>
+
 </body>
 </html>
